@@ -1,8 +1,8 @@
-# stats220
+## stats220
 
 This is my repo for STATS 220. 
 
-A little about me:
+# A little about me:
 
 - I am undertaking a degree in Arts, Majoring in Stats and Music
 - I am taking STATS 220 because I need to take a second-level 2 stats paper, and it seemed interesting
