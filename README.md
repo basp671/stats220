@@ -12,3 +12,7 @@ A meme that captures how I currently feel about my university studies is ![](htt
 
 ## ***Project one stuff***
 # Ordered things I like (in no particular order)
+1. Making music (Originals and covers)
+2. Playing games
+3. Reading
+4. Watching good movies
