@@ -9,3 +9,5 @@ This is my repo for STATS 220.
 - I am interested in learning about music more than stats, honestly, but I see stats as a more realistic and helpful major for my future
 
 A meme that captures how I currently feel about my university studies is ![](https://www.essex.ac.uk/-/media/images/blogs/posts/2020/08/2017-04-07-meme-1.jpg)
+
+# ***Project one stuff***
