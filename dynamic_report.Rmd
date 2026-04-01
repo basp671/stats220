@@ -1,0 +1,71 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-top: 40px;
+}
+
+```
+
+## Bird Spotting Around My House
+
+A simple observational study of the birds around my house. I live in the bushy area of titirangi (and the best part of NZ) and there is a lot of wildlife that can be found around, which is where I got the idea for my study. I counted the number of birds that I could see at a given period of the day, sometimes doing multiple viewing sessions per day. I also noted the first bird spotted of the day.
+
+```{r}
+library(tidyverse)
+
+logged_data <- read.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSBYEfJRTPBDGttTUqaNyCWAs4e9vM1wfKc_R7rKOW0U9nkFb-FWVZrnhQVaV492kshuO1BzeMzB-4p/pub?output=csv')
+logged_data <- logged_data[-18, ]
+logged_data <- rename(logged_data, TOD = 2, First_Bird = 3, Total_Birds = 4)
+logged_data <- logged_data[,-1]
+
+char <- sum(nchar(logged_data))
+Columns <- length(logged_data)
+comment1 <- paste("there was a total of", Columns,"columns and", char,"characters across all values from all", Columns,  "columns" )
+print(comment1)
+
+
+logged_data %>%
+  ggplot() +
+  geom_bar(aes(x = First_Bird),
+           fill = "#0091ff") +
+  labs(title = "First Bird spotted in sessions",
+       x = "Type of bird",
+       y = "Times seen first")
+
+logged_data %>%
+  ggplot() +
+  geom_bar(aes(x = Total_Birds, fill = TOD)) +
+  labs(title = "Best time for birdspotting? (at my house)",
+       subtitle = "Comparing the number of birds seen to times of day", 
+       x = "Number of birds", 
+       y = "Number of sessions") + #hard to see where times of day end exactly and the number of birds is displayed strangely, can't have 2.5 birds seen so changing the values displayed on each axis is important
+  scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10))+
+  scale_y_continuous(breaks = c(0,1,2,3,4,5,6))
+
+
+```
+
+
+
+
